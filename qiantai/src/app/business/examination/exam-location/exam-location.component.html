@@ -1,0 +1,30 @@
+<commom-page api="examLocations"
+             title="考点"
+             [model]="model"
+             (onModel)="model=$event"
+             [gridCfg]="gridCfg"
+             [edit]="edit"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考点编号：</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control"
+                 [(ngModel)]="model.examLocationNum"
+                 placeholder="考点编号...">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考点名称：</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control"
+                 [(ngModel)]="model.examLocationName"
+                 placeholder="考点名称...">
+        </div>
+      </div>
+    </div>
+  </div>
+</commom-page>

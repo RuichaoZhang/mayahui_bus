@@ -1,0 +1,29 @@
+<commom-page api="examSubjects"
+             title="考试科目"
+             [model]="model"
+             (onModel)="model=$event"
+             [gridCfg]="gridCfg"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考试科目编号：</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control"
+                 [(ngModel)]="model.examSubjectNum"
+                 placeholder="考试科目编号...">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考试科目名称：</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control"
+                 [(ngModel)]="model.examSubjectName"
+                 placeholder="考试科目名称...">
+        </div>
+      </div>
+    </div>
+  </div>
+</commom-page>

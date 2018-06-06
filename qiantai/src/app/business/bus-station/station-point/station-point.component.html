@@ -1,0 +1,107 @@
+<div class="c-content-inner">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="c-line-title">站点管理</p>
+    </div>
+  </div>
+
+  <div class="row pt-2 pb-2">
+    <div class="col-md-12">
+      <button class="btn btn-primary mr-3"
+              (click)="isVisible_create = true"><i class="fa fa-plus fa-fw"></i>新增
+      </button>
+    </div>
+    <div class="col-md-4">
+    <input type="text" name="searchText" [(ngModel)]="station" (change)="searchStation(station)" class="form-control" placeholder="请输入搜索条件...">
+    </div>
+
+  </div>
+
+  <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+    <thead nz-thead>
+    <tr>
+      <th nz-th><span>编号</span></th>
+      <th nz-th><span>站点编号</span></th>
+      <th nz-th><span>站点名称</span></th>
+      <th nz-th><span>站点类型</span></th>
+      <th nz-th><span>站点描述</span></th>
+      <th nz-th><span>操作时间</span></th>
+      <th nz-th><span>操作</span></th>
+    </tr>
+    </thead>
+    <tbody nz-tbody>
+    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+      <td nz-td>{{data.id}}</td>
+      <td nz-td>{{data.stationNum}}</td>
+      <td nz-td>{{data.stationName}}</td>
+      <td nz-td>{{data.stationType}}</td>
+      <td nz-td>{{data.stationDescription}}</td>
+      <td nz-td>{{data.createTime}}</td>
+      <td nz-td>
+        <button class="btn btn-primary mr-3"
+                (click)="edit(data)"><i class="fa fa-edit fa-fw"></i>修改
+        </button>
+        <button class="btn btn-danger mr-3"
+                (click)="remove(data.id)"><i class="fa fa-remove fa-fw"></i>删除
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<!--新增/修改modal-->
+<nz-modal [(nzVisible)]="isVisible_create" [nzTitle]="model.id ? '修改站点' : '新增站点'" (nzOnCancel)="isVisible_create = false"
+          (nzOnOk)="createOkClick(model)" [nzContent]="modalContent1">
+  <ng-template #modalContent1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">站点编号：</label>
+          <div class="col-md-7">
+            <input type="text" class="form-control"
+                   [(ngModel)]="model.stationNum"
+                   placeholder="站点编号...">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">站点名称：</label>
+          <div class="col-md-7">
+            <input type="text" class="form-control"
+                   [(ngModel)]="model.stationName"
+                   placeholder="站点名称...">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">站点类型：</label>
+          <div class="col-md-7">
+            <sui-select class="selection"
+                        [(ngModel)]="model.stationType"
+                        [options]="['枢纽站', '普通站']"
+                        placeholder="请选择"
+                        (selectedOptionChange)="model.stationType = $event"
+                        #select2>
+              <sui-select-option *ngFor="let option of select2.filteredOptions"
+                                 [value]="option">
+              </sui-select-option>
+            </sui-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">站点描述：</label>
+          <div class="col-md-7">
+            <textarea type="text" class="form-control"
+                   [(ngModel)]="model.stationDescription"
+                      placeholder="站点描述..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>

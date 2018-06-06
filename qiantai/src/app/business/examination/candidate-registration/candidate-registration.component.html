@@ -1,0 +1,113 @@
+<commom-page api="candidateRegistrations"
+             title="考生报名"
+             [model]="model"
+             (onModel)="model=$event"
+             [gridCfg]="gridCfg"
+             [createText]="'报名'"
+             [options]="options"
+             [detail]="detail"
+             [edit]="edit"
+             [remove]="remove"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考点名称：</label>
+        <div class="col-md-7">
+          <sui-select class="selection"
+                      [(ngModel)]="model.examLocationName"
+                      [options]="examLocations"
+                      (ngModelChange)="examLocationChange($event)"
+                      #select1>
+            <sui-select-option *ngFor="let option of select1.filteredOptions"
+                               [value]="option.examLocationName">
+            </sui-select-option>
+          </sui-select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">科目名称：</label>
+        <div class="col-md-7">
+          <sui-select class="selection"
+                      [(ngModel)]="model.examSubjectName"
+                      [options]="examSubjects"
+                      (ngModelChange)="examSubjectChange($event)"
+                      #select2>
+            <sui-select-option *ngFor="let option of select2.filteredOptions"
+                               [value]="option.examSubjectName">
+            </sui-select-option>
+          </sui-select>
+        </div>
+      </div>
+    </div>
+  </div>
+</commom-page>
+
+<!--查看准考证modal-->
+<nz-modal [(nzVisible)]="modalVisable" nzTitle="准考证" (nzOnCancel)="modalCancelClick()"
+          [nzContent]="modalContent">
+  <ng-template #modalContent>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">考点名称：</label>
+          <div class="col-md-7">
+            {{model.examLocationName}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">考场名称：</label>
+          <div class="col-md-7">
+            {{model.attribute4}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">姓名：</label>
+          <div class="col-md-7">
+            {{model.userName}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">考试信息：</label>
+          <div class="col-md-7">
+            {{model.attribute3}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">准考证号：</label>
+          <div class="col-md-7">
+            {{model.attribute2}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">身份证号：</label>
+          <div class="col-md-7">
+            {{model.attribute5}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>

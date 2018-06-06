@@ -1,0 +1,205 @@
+<div class="c-content-inner-not-bg">
+
+
+
+    <div class="row  c-mb15" [hidden]="userTipClose">
+        <div class="col-md-12">
+            <div class="card c-card">
+                <div class="card-body">
+                    <i class="fa fa-bullhorn fa-fw text-danger"></i>
+                  <strong class="text-danger">欢迎您，{{user.userName}} [{{user.userType}}]</strong>
+                  <!--<span class="c-home-login-tip">， 这是您第 <span class="text-danger">12708</span>                    次登录，上次登录时间： <span class="text-danger">2017-5-20 21:05:20</span>，如果不是您本人登录，请及时 <a href="javascript:void(0)" (click)="passwordEdit()">修改密码</a>                    。</span>-->
+                    <!--<button aria-label="Close" class="close" type="button"  (click)="userTipClose=true">-->
+                       <!--<span aria-hidden="true">×</span>-->
+                    <!--</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row">-->
+
+        <!--<div class="col-md-6">-->
+
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="card c-card c-home-card">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-9">-->
+                                    <!--<h5 class="card-title c-fs15"><i class="fa fa-bell-o fa-fw"></i> 待办信息</h5>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-3 text-right">-->
+                                    <!--<a class="c-cursor-pointer" (click)="isTodoCollapsed = !isTodoCollapsed"><em class="fa fa-minus"></em></a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div [ngbCollapse]="isTodoCollapsed">-->
+                                <!--<div class="row  c-mt15  c-scroll-y-a c-home-card-inner">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<table class="c-line-table">-->
+                                            <!--<tr>-->
+                                                <!--<td>-->
+                                                    <!--<span class="c-home-card-tip"><i class="fa fa-info fa-fw"></i>您共有<strong class="text-danger"> {{todoObj.total}} </strong> 条未处理待办信息</span>-->
+                                                <!--</td>-->
+                                                <!--<td class=" text-right">-->
+                                                    <!--<a class="text-danger c-cursor-pointer">查看更多&gt;&gt;</a>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                        <!--</table>-->
+                                        <!--<table class="c-line-table  table-hover">-->
+                                            <!--<tbody>-->
+                                                <!--<tr class="c-cursor-pointer" *ngFor="let todo of todoObj.todoList;let i = index">-->
+                                                    <!--<td>{{i+1}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<span class="badge badge-success">{{todo.submitUser}}</span>&nbsp;-->
+                                                        <!--<span>{{todo.title}}</span>-->
+                                                    <!--</td>-->
+                                                    <!--<td class="text-right c-date">-->
+                                                        <!--{{todo.createDate}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row  c-mt15">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="card c-card c-home-card">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-9">-->
+                                    <!--<h5 class="card-title c-fs15"><i class="fa fa-bullhorn fa-fw"></i> 系统通知</h5>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-3 text-right">-->
+                                    <!--<a class="c-cursor-pointer" (click)="isNoticeCollapsed = !isNoticeCollapsed"><em class="fa fa-minus"></em></a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div [ngbCollapse]="isNoticeCollapsed">-->
+                                <!--<div class="row c-mt15  c-scroll-y-a c-home-card-inner">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<table class="c-line-table">-->
+                                            <!--<tr>-->
+                                                <!--<td>-->
+                                                    <!--<span class="c-home-card-tip"><i class="fa fa-info fa-fw"></i>您共有<strong class="text-danger"> {{noticeObj.total}} </strong> 条未查看系统通知</span>-->
+                                                <!--</td>-->
+                                                <!--<td class=" text-right">-->
+                                                    <!--<a class="text-danger c-cursor-pointer">查看更多&gt;&gt;</a>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                        <!--</table>-->
+                                        <!--<table class="c-line-table  table-hover">-->
+                                            <!--<tbody>-->
+                                                <!--<tr class="c-cursor-pointer" *ngFor="let notice of noticeObj.noticeList;let i = index">-->
+                                                    <!--<td>{{i+1}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<span>{{notice.title}}</span>-->
+                                                    <!--</td>-->
+                                                    <!--<td class="text-right c-date">-->
+                                                        <!--{{notice.createDate}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+        <!--<div class="col-md-6">-->
+
+            <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="card c-card c-home-card">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-9">-->
+                                    <!--<h5 class="card-title c-fs15"><i class="fa fa-envelope-open-o fa-fw"></i> 待阅信息</h5>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-3 text-right">-->
+                                    <!--<a class="c-cursor-pointer" (click)="isNeedReadCollapsed = !isNeedReadCollapsed"><em class="fa fa-minus"></em></a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div [ngbCollapse]="isNeedReadCollapsed">-->
+                                <!--<div class="row  c-mt15  c-scroll-y-a c-home-card-inner">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<table class="c-line-table">-->
+                                            <!--<tr>-->
+                                                <!--<td>-->
+                                                    <!--<span class="c-home-card-tip"><i class="fa fa-info fa-fw"></i>您共有<strong class="text-danger"> {{needReadObj.total}} </strong> 条未查看待阅信息</span>-->
+                                                <!--</td>-->
+                                                <!--<td class=" text-right">-->
+                                                    <!--<a class="text-danger c-cursor-pointer">查看更多&gt;&gt;</a>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                        <!--</table>-->
+                                        <!--<table class="c-line-table  table-hover">-->
+                                            <!--<tbody>-->
+                                                <!--<tr class="c-cursor-pointer" *ngFor="let needRead of needReadObj.needReadList;let i = index">-->
+                                                    <!--<td>{{i+1}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<span class="badge badge-warning">{{needRead.type}}</span>&nbsp;-->
+                                                        <!--<span>{{needRead.title}}</span>-->
+                                                    <!--</td>-->
+                                                    <!--<td class="text-right c-date">-->
+                                                        <!--{{needRead.createDate}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row  c-mt15">-->
+                <!--<div class="col-md-12">-->
+                    <!--<div class="card c-card  c-home-card">-->
+                        <!--<div class="card-body">-->
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-9">-->
+                                    <!--<h5 class="card-title c-fs15"><i class="fa fa-cubes fa-fw"></i> 常用功能</h5>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-3 text-right">-->
+                                    <!--<a class="c-cursor-pointer"><em class="fa fa-cog" placement="bottom" [ngbTooltip]="commonFuncConfigTip"></em></a>                                    &nbsp;-->
+                                    <!--<a class="c-cursor-pointer" (click)="isCommonFuncCollapsed = !isCommonFuncCollapsed"><em class="fa fa-minus"></em></a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div [ngbCollapse]="isCommonFuncCollapsed">-->
+                                <!--<div class="row c-mt15  c-scroll-y-a c-home-card-inner">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<div class="row c-mt10" *ngFor="let commonFunc of commonFuncLit;let i = index">-->
+                                            <!--<div class="col-md-3" *ngFor="let obj  of commonFuncLit[i]">-->
+                                                <!--<div class="card card-outline-secondary  text-center c-home-common-func-outline">-->
+                                                    <!--<div class="card-body c-home-common-func">-->
+                                                        <!--<i class="fa " [ngClass]="obj.icon"></i> <span>{{obj.name}}</span>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+
+</div>

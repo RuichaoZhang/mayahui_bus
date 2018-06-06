@@ -1,0 +1,55 @@
+<commom-page api="examinationVenues"
+             title="考场管理"
+             [model]="model"
+             (onModel)="modelChange($event)"
+             [gridCfg]="gridCfg"
+>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考场编号：</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control"
+                 [(ngModel)]="model.examinationVenueNum"
+                 placeholder="考场编号...">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考场名称：</label>
+        <div class="col-md-7">
+          <input type="text" class="form-control"
+                 [(ngModel)]="model.examinationVenueName"
+                 placeholder="考场名称...">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">考点名称：</label>
+        <div class="col-md-7">
+          <sui-select class="selection"
+                      [(ngModel)]="model.examLocationName"
+                      (ngModelChange)="examLocationChange($event)"
+                      [options]="examLocations"
+                      #select>
+            <sui-select-option *ngFor="let option of select.filteredOptions"
+                               [value]="option.examLocationName">
+            </sui-select-option>
+          </sui-select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label class="col-md-3 col-form-label text-right">机器数量：</label>
+        <div class="col-md-7">
+          <input type="number" class="form-control"
+                 [(ngModel)]="model.machineNum"
+                 placeholder="机器数量...">
+        </div>
+      </div>
+    </div>
+  </div>
+</commom-page>

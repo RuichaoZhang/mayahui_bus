@@ -1,0 +1,301 @@
+/**
+ * 考试科目
+ * @author RuichaoZhang
+ *
+ */
+@Entity
+public class ExamSubject {
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+	
+	/**
+	 * 考试科目编号,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examSubjectNum;
+    
+    /**
+	 * 考试科目名称,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examSubjectName;
+    
+    private String attribute1;
+    private String attribute2;
+    private String attribute3;
+    private String attribute4;
+    private String attribute5;
+	
+	
+	
+	/**
+ * 考点
+ * @author RuichaoZhang
+ *
+ */
+@Entity
+public class ExamLocation {
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+	
+	/**
+	 * 考点编号,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examLocationNum;
+    
+    /**
+     * 考点名称
+     * eg:西安石油大学;西安交通大学
+     */
+    @Column(nullable = false, unique = true)
+    private String examLocationName;
+    
+    private String attribute1;
+    private String attribute2;
+    private String attribute3;
+    private String attribute4;
+    private String attribute5;
+	
+	/**
+ * 考场
+ * @author RuichaoZhang
+ *
+ */
+@Entity
+public class ExaminationVenue {
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+	
+	/**
+	 * 考场编号
+	 * eg:001;002
+	 */
+    @Column(nullable = false, unique = true)
+    private String examinationVenueNum;
+    
+    /**
+	 * 考场名称
+	 * eg:1号;2号
+	 */
+    @Column(nullable = false, unique = true)
+    private String examinationVenueName;
+    
+    
+    /**
+	 * 考点名称
+	 * eg:从ExcamLocation的examLocationName取
+	 */
+    @Column(nullable = false, unique = false)
+    private String examLocationName;
+    
+    /**
+   	 * 考点编号
+   	 * eg:从ExcamLocation的examLocationNum取
+   	 */
+    @Column(nullable = false, unique = false)
+    private String examLocationNum;
+    
+    /**
+   	 * 机器数量
+   	 * 编排考生的数量不能超过机器数量
+   	 */
+    @Column(nullable = false, unique = false)
+    private String machineNum;
+    
+    private String attribute1;
+    private String attribute2;
+    private String attribute3;
+    private String attribute4;
+    private String attribute5;
+	
+	/**
+ * 考生报名
+ * 用于记录考生报考了哪些科目
+ * @author RuichaoZhang
+ *
+ */
+@Entity
+public class CandidateRegistration {
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+	
+	/**
+	 * 考点编号
+	 * 考生选取的考点
+	 * eg:从ExamLocation的examLocationNum来
+	 */
+    @Column(nullable = false, unique = false)
+    private String examLocationNum;
+    
+    /**
+	 * 考点名称
+	 * 考生选取的考点
+	 * eg:从ExamLocation的examLocationName来
+	 */
+    @Column(nullable = false, unique = false)
+    private String examLocationName;
+    
+    /**
+	 * 考生id
+	 */
+    @Column(nullable = false, unique = false)
+    private String userId;
+    
+    /**
+	 * 考生姓名
+	 */
+    @Column(nullable = false, unique = false)
+    private String userName;
+    
+    /**
+	 * 科目编号
+	 * 考生选取的科目
+	 * eg:从ExamSubject的examSubjectNum来
+	 */
+    @Column(nullable = false, unique = false)
+    private String examSubjectNum;
+    
+    /**
+	 * 科目名称
+	 * 考生选取的科目
+	 * eg:从ExamSubject的examSubjectName来
+	 */
+    @Column(nullable = false, unique = false)
+    private String examSubjectName;
+    
+    /**
+	 * 报考顺序号
+	 * eg:张三报考了Java,那么此值为0,李四接着报考,那么此值为1
+	 */
+    @Column(nullable = false, unique = false)
+    private String registrationOrderNum;
+	
+	
+	
+	/**
+ * 考试编排
+ * @author RuichaoZhang
+ *
+ */
+@Entity
+public class ExaminationChoreography {
+	
+	public String getUserList() {
+		return userList;
+	}
+	public void setUserList(String userList) {
+		this.userList = userList;
+	}
+	@Override
+	public String toString() {
+		return "ExaminationChoreography [id=" + id + ", examSubjectNum=" + examSubjectNum + ", examSubjectName="
+				+ examSubjectName + ", examLocationNum=" + examLocationNum + ", examLocationName=" + examLocationName
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", userList=" + userList + ", attribute1="
+				+ attribute1 + ", attribute2=" + attribute2 + ", attribute3=" + attribute3 + ", attribute4="
+				+ attribute4 + ", attribute5=" + attribute5 + "]";
+	}
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+	
+	/**
+	 * 考试科目编号,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examSubjectNum;
+    
+    /**
+	 * 考试科目名称,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examSubjectName;
+    
+    /**
+	 * 考场编号,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examLocationNum;
+    
+    /**
+	 * 考场名称,
+	 * eg:001;002之类
+	 */
+    @Column(nullable = false, unique = true)
+    private String examLocationName;
+    
+    /**
+	 * 考试开始时间
+	 */
+    @Column(nullable = false, unique = true)
+    private String startTime;
+    
+    /**
+	 * 考试结束时间
+	 */
+    @Column(nullable = false, unique = true)
+    private String endTime;
+    
+    /**
+	 * 考试用户列表
+	 */
+    @Column(nullable = false, unique = true)
+    private String userList;
+    
+    private String attribute1;
+    private String attribute2;
+    private String attribute3;
+    private String attribute4;
+    private String attribute5;
+	
+	/**
+ * 准考证
+ * @author RuichaoZhang
+ *
+ */
+@Entity
+public class AdmissionTicket {
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GenericGenerator(name = "increment", strategy = "increment")
+    private long id;
+	
+	/**
+	 * 准考证号
+	 * 考点编号 + 科目编号 + 报考顺序号
+	 */
+    @Column(nullable = false, unique = true)
+    private String admissionTicketNum;
+    
+    /**
+	 * 考生Id
+	 */
+    @Column(nullable = false, unique = true)
+    private String userId;
+    
+    /**
+	 * 考生姓名
+	 */
+    @Column(nullable = false, unique = true)
+    private String userName;
+    
+    private String attribute1;
+    private String attribute2;
+    private String attribute3;
+    private String attribute4;
+    private String attribute5;

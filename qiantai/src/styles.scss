@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+/*你可以添加全局的样式到这个文件中，并且可以引入其它的样式文件*/
+
+/* ======以下是第三方scss与css引入======*/
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/animate.css/animate.min.css';
+@import '../node_modules/ztree/css/metroStyle/metroStyle.css';
+@import '../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css';
+@import '../node_modules/imageviewer/dist/viewer.min.css';
+@import '../node_modules/quill/dist/quill.core.css';
+@import '../node_modules/quill/dist/quill.snow.css';
+@import '../node_modules/ag-grid/dist/styles/ag-grid.css';
+@import '../node_modules/ag-grid/dist/styles/ag-theme-material.css';
+
+//bootstrap
+@import "./assets/scss/base/bootstrap-variables.scss";
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+
+
+/* ======以下是自定义scss引入======*/
+//公共样式
+@import './assets/scss/base/app-base.scss';
+@import './assets/scss/base/common.scss';
+
+//样式重写
+@import './assets/scss/overwrite/bootstrap.scss';
+@import './assets/scss/overwrite/ztree.scss';
+@import './assets/scss/overwrite/select2-bootstrap.scss';
+@import './assets/scss/overwrite/mCustomScrollbar.scss';
+@import './assets/scss/overwrite/viewer.scss';
+@import './assets/scss/overwrite/_ng2-date-picker.scss';
+@import './assets/scss/overwrite/quill.scss';
+@import './assets/scss/overwrite/ag-grid.scss';
+
+//semantic-ui 在线引用
+@import "assets/scss/ng2-semantic-ui/semantic.min.css";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

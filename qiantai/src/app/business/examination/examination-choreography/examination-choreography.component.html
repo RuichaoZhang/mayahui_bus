@@ -1,0 +1,74 @@
+<commom-page #CommonPage api="examinationChoreographies"
+             title="考试编排"
+             [model]="model"
+             (onModel)="model=$event"
+             [gridCfg]="gridCfg"
+             [actions]="actions"
+             [create]="create"
+             [remove]="remove"
+             [edit]="edit"
+>
+</commom-page>
+
+<!--编排modal-->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="编排" (nzOnCancel)="isVisible = false"
+          [nzContent]="detailContent" (nzOnOk)="OkClick()">
+  <ng-template #detailContent>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">考场：</label>
+          <div class="col-md-7">
+            <sui-select class="selection"
+                        [(ngModel)]="model.examLocationName"
+                        [options]="examinationVenues"
+                        (ngModelChange)="examLocationChange($event)"
+                        #select1>
+              <sui-select-option *ngFor="let option of select1.filteredOptions"
+                                 [value]="option.examinationVenueName">
+              </sui-select-option>
+            </sui-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">科目：</label>
+          <div class="col-md-7">
+            <sui-select class="selection"
+                        [(ngModel)]="model.examSubjectName"
+                        [options]="examSubjects"
+                        (ngModelChange)="examSubjectChange($event)"
+                        #select2>
+              <sui-select-option *ngFor="let option of select2.filteredOptions"
+                                 [value]="option.examSubjectName">
+              </sui-select-option>
+            </sui-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">开始时间：</label>
+          <div class="col-md-7">
+            <nz-datepicker [(ngModel)]="model.startTime"
+                           nzShowTime
+                           [nzPlaceHolder]="'开始时间...'"
+                           [nzFormat]="'YYYY-MM-DD HH:mm:ss'"></nz-datepicker>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">结束时间：</label>
+          <div class="col-md-7">
+            <nz-datepicker [(ngModel)]="model.endTime"
+                           nzShowTime
+                           [nzPlaceHolder]="'结束时间...'"
+                           [nzFormat]="'YYYY-MM-DD HH:mm:ss'"></nz-datepicker>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>

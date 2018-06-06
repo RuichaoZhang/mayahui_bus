@@ -1,0 +1,92 @@
+<div class="c-login-wrapper animated fadeIn">
+  <div class="d-flex justify-content-center c-login-container">
+    <div class="card c-login-box">
+      <div class="card-body">
+        <div class="text-center c-login-header">
+          <a class="float-left" href="#" (click)="cancel()">取消</a>
+          <img src="assets/img/logo.png" class="rounded-circle"/>
+          <h3 class="card-title" style="display:inline">注册</h3>
+        </div>
+        <hr/>
+        <form>
+          <div class="form-group row">
+            <div class="col-12">
+              <label>用户名</label>
+              <input class="form-control "
+                     type="text"
+                     [(ngModel)]="model.userName"
+                     name="userName"
+                     placeholder="请输入用户名...">
+            </div>
+          </div>
+          <!--类型-->
+          <div class="form-group row">
+            <div class="col-12">
+              <label>用户类型</label>
+              <sui-select class="selection form-control"
+                          [(ngModel)]="model.userType"
+                          name="userType"
+                          [options]="userTypeOptions"
+                          placeholder="请选择用户类型"
+                          #select>
+                <sui-select-option *ngFor="let option of select.filteredOptions"
+                                   [value]="option">
+                </sui-select-option>
+              </sui-select>
+            </div>
+          </div>
+          <!--身份證號碼-->
+          <div class="form-group row">
+            <div class="col-12">
+              <label>身份证号码</label>
+              <input class="form-control"
+                     type="number"
+                     [(ngModel)]="model.attribute1"
+                     name="age"
+                     placeholder="请输入身份证号码...">
+            </div>
+          </div>
+          <!--電話-->
+          <div class="form-group row">
+            <div class="col-12">
+              <label>电话</label>
+              <input class="form-control"
+                     type="number"
+                     [(ngModel)]="model.attribute2"
+                     name="age"
+                     placeholder="请输入电话号码...">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <label>密码</label>
+              <input class="form-control"
+                     type="password"
+                     [(ngModel)]="model.password"
+                     name="password"
+                     placeholder="请输入密码...">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-12">
+              <label>重复密码</label>
+              <input class="form-control"
+                     type="password"
+                     [(ngModel)]="model.rPassword"
+                     name="rPassword"
+                     placeholder="重复密码...">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-12">
+              <button type="submit" class="btn c-not-shadow" (click)="regist();">注 册
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

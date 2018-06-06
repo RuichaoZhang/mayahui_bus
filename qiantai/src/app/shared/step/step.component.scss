@@ -1,0 +1,148 @@
+@import '../../../assets/scss/base/app-base.scss';
+.c-step{
+    display: block;
+    font-size: 13px;
+    overflow: hidden;
+    .c-step-item{
+      position: relative;
+      background: $c-color-gary;
+      float: left;
+      height: 35px;
+      line-height: 35px;
+      color: $c-color-black-secondary;
+      font-size: 16px;
+      padding-left: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      .c-step-index {
+          background: $c-color-black-light;
+          display: inline-block;
+          width: 19px;
+          height: 19px;
+          line-height:17px;
+          -webkit-border-radius: 100%;
+          -moz-border-radius: 100%;
+          border-radius: 100%;
+          color: $c-color-white;
+          text-align: center;
+          margin-right: 10px;
+      }
+      .c-step-dir {
+        background: $c-color-gray-secondary;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width:2px;
+        height:35px;
+      }
+    }
+  
+    .c-step-item-danger{
+      background: $c-bootstrap-danger;
+      color: $c-color-white;
+      &:hover{
+          background: $c-bootstrap-danger-deep;
+        .c-step-index {
+          color:$c-bootstrap-danger-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-danger;
+      }
+    }
+  
+    .c-step-item-warning{
+      background: $c-bootstrap-warning;
+      color: $c-color-white;
+      &:hover{
+        background: $c-bootstrap-warning-deep;
+        .c-step-index {
+          color:$c-bootstrap-warning-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-warning;
+      }
+    }
+  
+    .c-step-item-info{
+      background: $c-bootstrap-info;
+      color: $c-color-white;
+      &:hover{
+        background: $c-bootstrap-info-deep;
+        .c-step-index {
+          color:$c-bootstrap-info-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-info;
+      }
+    }
+  
+    .c-step-item-success{
+      background: $c-bootstrap-success;
+      color: $c-color-white;
+      &:hover{
+        background: $c-bootstrap-success-deep;
+        .c-step-index {
+          color:$c-bootstrap-success-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-success;
+      }
+    }
+  
+  
+    .c-step-item-primary{
+      background: $c-bootstrap-primary;
+      color: $c-color-white;
+      &:hover{
+        background: $c-bootstrap-primary-deep;
+        .c-step-index {
+          color:$c-bootstrap-primary-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-primary;
+      }
+    }
+  
+    .c-step-item-dark{
+      background: $c-bootstrap-dark;
+      color: $c-color-white;
+      &:hover{
+        background: $c-bootstrap-dark-deep;
+        .c-step-index {
+          color:$c-bootstrap-dark-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-dark;
+      }
+    }
+  
+    .c-step-item-secondary{
+      background: $c-bootstrap-secondary;
+      color: $c-color-white;
+      &:hover{
+        background: $c-bootstrap-secondary-deep;
+        .c-step-index {
+          color:$c-bootstrap-secondary-deep;
+        }
+      }
+      .c-step-index {
+        background: $c-color-white;
+        color:$c-bootstrap-secondary;
+      }
+    }
+  
+    
+    
+  }

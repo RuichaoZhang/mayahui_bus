@@ -1,0 +1,69 @@
+<div class="container-fluid pt-4">
+  <div class="row">
+    <div class="col-md-11">
+      <h3>公交线路查询</h3>
+    </div>
+    <div class="col-md-1">
+      <a class="float-right" routerLink="/login">登录</a>
+    </div>
+
+  </div>
+  <nz-card class="mt-4">
+    <ng-template #body>
+      <div class="row form-group">
+        <div class="col-md-4">
+          <input type="text" name="searchText" [(ngModel)]="startStation" class="form-control" placeholder="请输入起点站...">
+        </div>
+        <div class="col-md-4">
+          <input type="text" name="searchText" [(ngModel)]="endStation" class="form-control" placeholder="请输入终点站...">
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary mr-3"
+                  (click)="getLines(startStation, endStation)"><i class="fa fa-query fa-fw"></i>查询
+          </button>
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary mr-3"
+                  (click)="clear()"><i class="fa fa-refresh fa-fw"></i>清空
+          </button>
+        </div>
+      </div>
+
+
+      <div *ngIf="data.length > 0">
+        <div class="row">
+          <label>
+            乘车方案如下:
+          </label>
+        </div>
+        <tbody nz-tbody style="width: 500px">
+        <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+        <thead nz-thead>
+        <tr>
+          <th nz-th width="300"><span>线路名</span></th>
+          <th nz-th width="300"><span>上车站点</span></th>
+          <th nz-th width="300"><span>下车站点</span></th>
+          <th nz-th width="300"><span>全部站点</span></th>
+        </tr>
+        </thead>
+        <tbody nz-tbody>
+        <tr nz-tbody-tr *ngFor="let data of nzTable.data; let i = index">
+          <td nz-td>{{data.lineName}}</td>
+          <td nz-td>{{data.start}}</td>
+          <td nz-td>{{data.end}}</td>
+          <td nz-td>{{data.attribute1}}</td>
+        </tr>
+        </tbody>
+        </nz-table>`,
+      </div>
+
+      <div class="row" *ngIf="data.length === 0">
+        <label>
+          暂无乘车方案
+        </label>
+      </div>
+    </ng-template>
+  </nz-card>
+</div>
+
+

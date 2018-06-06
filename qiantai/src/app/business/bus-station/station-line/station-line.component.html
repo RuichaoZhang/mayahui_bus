@@ -1,0 +1,155 @@
+<div class="c-content-inner">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="c-line-title">线路管理</p>
+    </div>
+  </div>
+
+  <div class="row pt-2 pb-2">
+    <div class="col-md-12">
+      <button class="btn btn-primary mr-3"
+              (click)="isVisible_create = true"><i class="fa fa-plus fa-fw"></i>新增
+      </button>
+    </div>
+
+    <div class="col-md-4">
+    <input type="text" name="searchText" [(ngModel)]="line" (change)="findLines(line)" class="form-control" placeholder="请输入搜索条件...">
+    </div>
+
+  </div>
+
+  <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+    <thead nz-thead>
+    <tr>
+      <th nz-th><span>编号</span></th>
+      <th nz-th><span>线路编号</span></th>
+      <th nz-th><span>线路名称</span></th>
+      <th nz-th><span>线路描述</span></th>
+      <th nz-th><span>起始站</span></th>
+      <th nz-th><span>站点列表</span></th>
+      <th nz-th><span>终点站</span></th>
+      <th nz-th><span>操作时间</span></th>
+      <th nz-th><span>操作</span></th>
+    </tr>
+    </thead>
+    <tbody nz-tbody>
+    <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+      <td nz-td>{{data.id}}</td>
+      <td nz-td>{{data.lineNum}}</td>
+      <td nz-td>{{data.lineName}}</td>
+      <td nz-td>{{data.lineDescription}}</td>
+      <td nz-td>{{data.start}}</td>
+      <td nz-td>{{data.stationList}}</td>
+      <td nz-td>{{data.end}}</td>
+      <td nz-td>{{data.createTime}}</td>
+      <td nz-td>
+        <button class="btn btn-primary mr-3"
+                (click)="edit(data)"><i class="fa fa-edit fa-fw"></i>修改
+        </button>
+        <button class="btn btn-danger mr-3"
+                (click)="remove(data.id)"><i class="fa fa-remove fa-fw"></i>删除
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<!--新增/修改modal-->
+<nz-modal [(nzVisible)]="isVisible_create" [nzTitle]="model.id ? '修改线路' : '新增线路'" (nzOnCancel)="isVisible_create = false"
+          (nzOnOk)="createOkClick(model)" [nzContent]="modalContent1">
+  <ng-template #modalContent1>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">线路编号：</label>
+          <div class="col-md-7">
+            <input type="text" class="form-control"
+                   [(ngModel)]="model.lineNum"
+                   placeholder="线路编号...">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">线路名称：</label>
+          <div class="col-md-7">
+            <input type="text" class="form-control"
+                   [(ngModel)]="model.lineName"
+                   placeholder="线路名称...">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">起始站：</label>
+          <div class="col-md-7">
+            <sui-select class="selection"
+                        [(ngModel)]="model.start"
+                        [options]="stations"
+                        placeholder="请选择"
+                        #selectStart>
+              <sui-select-option *ngFor="let option of selectStart.filteredOptions"
+                                 [value]="option">
+              </sui-select-option>
+            </sui-select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12" *ngFor="let item of model.stationList; let i = index">
+        <div class="form-group row" *ngIf="item !== null">
+          <label class="col-md-3 col-form-label text-right">中间站{{i+1}}：</label>
+          <div class="col-md-4">
+            <sui-select class="selection"
+                        [(ngModel)]="model.stationList[i]"
+                        [options]="stations"
+                        placeholder="请选择">
+              <sui-select-option *ngFor="let option of selectStart.filteredOptions"
+                                 [value]="option">
+              </sui-select-option>
+            </sui-select>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-primary mr-3"
+                    (click)="model.stationList[i] = null"><i class="fa fa-remove fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row col-md-4 col-md-offset-4">
+          <button class="btn btn-primary mr-3"
+                  (click)="model.stationList.push('')"><i class="fa fa-plus fa-fw"></i>添加中间站
+          </button>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">终点站：</label>
+          <div class="col-md-7">
+            <sui-select class="selection"
+                        [(ngModel)]="model.end"
+                        [options]="stations"
+                        placeholder="请选择"
+                        #selectEnd>
+              <sui-select-option *ngFor="let option of selectEnd.filteredOptions"
+                                 [value]="option">
+              </sui-select-option>
+            </sui-select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label text-right">线路描述：</label>
+          <div class="col-md-7">
+            <textarea  class="form-control"
+                   [(ngModel)]="model.lineDescription"
+                   placeholder="线路描述..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</nz-modal>
